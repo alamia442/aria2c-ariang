@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd /app
 # Install rclone static binary
 wget -q https://downloads.rclone.org/v1.53.0/rclone-v1.53.0-linux-amd64.zip
 unzip -q rclone-v1.53.0-linux-amd64.zip
@@ -13,7 +14,6 @@ export PATH=/app:$PATH
 # Create download folder
 mkdir -p downloads
 
-cd /app
 # DHT
 wget -q https://github.com/P3TERX/aria2.conf/raw/master/dht.dat
 wget -q https://github.com/P3TERX/aria2.conf/raw/master/dht6.dat
