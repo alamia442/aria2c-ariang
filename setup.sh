@@ -11,7 +11,7 @@ tar xf aria2-1.35.0-static-linux-amd64.tar.gz
 export PATH=/app:$PATH
 
 # Create download folder
-mkdir -p /app/downloads
+mkdir -p downloads
 
 cd /app
 # DHT
