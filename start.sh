@@ -12,8 +12,8 @@ export PATH="$(cat PATH)"
 if [[ -n $RCLONE_CONFIG && -n $RCLONE_DESTINATION ]]; then
 	echo "Rclone config detected"
 	echo -e "[DRIVE]\n$RCLONE_CONFIG" > /app/rclone.conf
-	echo "on-download-stop=./delete.sh" >> /app/aria2c.conf
-	echo "on-download-complete=./on-complete.sh" >> /app/aria2c.conf
+	echo "on-download-stop=/app/delete.sh" >> /app/aria2c.conf
+	echo "on-download-complete=/app/on-complete.sh" >> /app/aria2c.conf
 	chmod +x delete.sh
 	chmod +x on-complete.sh
 fi
