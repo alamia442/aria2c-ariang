@@ -1,5 +1,5 @@
 #!/bin/bash
-
+bash setup.sh
 if [ -f .env ]; then
     echo ".env file found, sourcing it"
 	set -o allexport
@@ -11,13 +11,13 @@ export PATH="$(cat PATH)"
 
 if [[ -n $RCLONE_CONFIG && -n $RCLONE_DESTINATION ]]; then
 	echo "Rclone config detected"
-	echo -e "[DRIVE]\n$RCLONE_CONFIG" > rclone.conf
-	echo "on-download-stop=./delete.sh" >> aria2c.conf
-	echo "on-download-complete=./on-complete.sh" >> aria2c.conf
+	echo -e "[DRIVE]\n$RCLONE_CONFIG" > /app/rclone.conf
+	echo "on-download-stop=./delete.sh" >> /app/aria2c.conf
+	echo "on-download-complete=./on-complete.sh" >> /app/aria2c.conf
 	chmod +x delete.sh
 	chmod +x on-complete.sh
 fi
 
-echo "rpc-secret=$ARIA2C_SECRET" >> aria2c.conf
-aria2c --conf-path=aria2c.conf&
+echo "rpc-secret=$ARIA2C_SECRET" >> /app/aria2c.conf
+aria2c --conf-path=/app/aria2c.conf&
 yarn start
