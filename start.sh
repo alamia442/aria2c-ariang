@@ -1,5 +1,7 @@
 #!/bin/bash
+cd /app
 bash setup.sh
+yarn
 if [ -f .env ]; then
     echo ".env file found, sourcing it"
 	set -o allexport
