@@ -13,9 +13,12 @@ export PATH=/app:$PATH
 # Create download folder
 mkdir -p /app/downloads
 
+cd /app
 # DHT
 wget -q https://github.com/P3TERX/aria2.conf/raw/master/dht.dat
 wget -q https://github.com/P3TERX/aria2.conf/raw/master/dht6.dat
+
+echo "peer-id-prefix=-qB4250-$(cat /dev/urandom | tr -dc 'a-zA-Z0-9!~*()._-' | fold -w 12 | head -n 1)" >> /app/aria2c.conf
 
 # Tracker
 tracker_list=`curl -Ns https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt | awk '$1' | tr '\n' ',' | cat`
