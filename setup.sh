@@ -12,7 +12,7 @@ tar xf aria2-1.35.0-static-linux-amd64.tar.gz
 export PATH=/app:$PATH
 
 # Create download folder
-mkdir -p downloads
+mkdir -p /app/downloads
 
 # DHT
 wget -q https://github.com/P3TERX/aria2.conf/raw/master/dht.dat
